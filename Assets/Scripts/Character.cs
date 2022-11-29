@@ -1,15 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
+//using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
-public class movements : MonoBehaviour
+public class Character : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 10;
     [SerializeField] private float groundedDistance = 2f;
 
-    [SerializeField] private GameObject dot;
     [SerializeField] private LayerMask groundedLayer;
 
     private Rigidbody2D rb2D;
@@ -18,12 +20,13 @@ public class movements : MonoBehaviour
     void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
+    
     }
 
     // Start is called before the first frame update --> quand on fait le lien entre les objets
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -49,7 +52,7 @@ public class movements : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && (IsGrounded()))
         { // avec GetKeyDown c'est au moment où j'appuie, et pas tant que j'appuie comme GetKey
-            rb2D.velocity = new Vector2(0, jumpForce);
+            rb2D.velocity = new UnityEngine.Vector2(0, jumpForce);
         }
     }
 
@@ -66,12 +69,12 @@ public class movements : MonoBehaviour
             return false;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "collectible")
-        {
-            Destroy(collision.gameObject);
-            dot.SetActive(true);
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "collectible")
+    //    {
+    //        Destroy(collision.gameObject);
+    //        dot.SetActive(true);
+    //    }
+    //}
 }
