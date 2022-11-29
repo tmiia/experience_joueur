@@ -11,9 +11,19 @@ public class Character : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 10;
     [SerializeField] private float groundedDistance = 2f;
+    [SerializeField] public int life = 5;
+    [SerializeField] private int collectibleLayer = 6;
+    [SerializeField] private bool lamp = false;
+    [SerializeField] private bool battery = false;
+
+
+    [SerializeField] private string itemLifeSecond = "lamp";
+    [SerializeField] private string itemLifeFirst = "battery";
 
 
     [SerializeField] private GameObject character;
+
+
     [SerializeField] private LayerMask groundedLayer;
     [SerializeField] private LayerMask deathZoneLayer;
 
@@ -29,7 +39,7 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update --> quand on fait le lien entre les objets
     void Start()
     {
-        
+      
     }
 
     // Update is called once per frame
@@ -78,11 +88,53 @@ public class Character : MonoBehaviour
         character.SetActive(false);
     }
 
+    private void UpdateLife(int value, bool isCompleted = false)
+    {
+        if(life > 0 && !isCompleted)
+        {
+            life += value;
+            if(life == 0)
+            {
+                GameOver();
+            }
+        } else if(life <= 0)
+        {
+            GameOver();
+        } else if (isCompleted)
+        {
+            life = value;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "zone51")
         {
             GameOver();
+        } else if (collision.gameObject.tag == "enemy")
+        {   
+            UpdateLife(-5);
+        } else if (collision.gameObject.layer == collectibleLayer)
+        {
+            PickItem(collision.gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
+
+    private void PickItem(GameObject item)
+    {
+        string itemTag = item.tag;
+       
+        if (itemTag == itemLifeFirst)
+        {
+            battery = true;
+        } else if (itemTag == itemLifeSecond)
+        {
+            lamp = true;
+        }
+        if (battery && lamp)
+        {
+            UpdateLife(15, true);
         }
     }
 }

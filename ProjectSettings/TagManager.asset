@@ -4,16 +4,20 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ground
   - zone51
+  - plateform
+  - enemy
+  - lamp
+  - battery
+  - memory
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - ground
+  - plateform
   - Water
   - UI
-  - 
+  - collectible
   - 
   - 
   - 
@@ -43,7 +47,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: ground
+  - name: plateform
     uniqueID: 2318106709
     locked: 0
   - name: character
