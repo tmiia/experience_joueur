@@ -12,7 +12,10 @@ public class Character : MonoBehaviour
     [SerializeField] private float jumpForce = 10;
     [SerializeField] private float groundedDistance = 2f;
 
+
+    [SerializeField] private GameObject character;
     [SerializeField] private LayerMask groundedLayer;
+    [SerializeField] private LayerMask deathZoneLayer;
 
     private Rigidbody2D rb2D;
 
@@ -69,12 +72,17 @@ public class Character : MonoBehaviour
             return false;
         }
     }
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "collectible")
-    //    {
-    //        Destroy(collision.gameObject);
-    //        dot.SetActive(true);
-    //    }
-    //}
+
+    private void GameOver()
+    {
+        character.SetActive(false);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "zone51")
+        {
+            GameOver();
+        }
+    }
 }
