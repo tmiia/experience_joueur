@@ -12,7 +12,6 @@ public class Choice : MonoBehaviour
     private string goodChoice = "goodChoice";
     private string badChoice = "badChoice";
     private string neutralChoice = "neutralChoice";
-    private int globalRate = GameManager.Instance.rate;
     private int maxScore = 15;
     private int minScore = 5;
 
@@ -37,7 +36,7 @@ public class Choice : MonoBehaviour
 
     void UpdateRate(string tag)
     {
-        if (tag == goodChoice || tag == neutralChoice && globalRate >= 0 && globalRate < (maxScore * GameManager.totalLevel))
+        if (tag == goodChoice || tag == neutralChoice && GameManager.Instance.rate >= 0 && GameManager.Instance.rate < (maxScore * GameManager.totalLevel))
         {
             if (tag == goodChoice)
             {
@@ -50,7 +49,7 @@ public class Choice : MonoBehaviour
             }
         }
 
-        if (tag == badChoice && globalRate >= maxScore)
+        if (tag == badChoice && GameManager.Instance.rate >= maxScore)
         {
             GameManager.Instance.rate -= maxScore;
         }
