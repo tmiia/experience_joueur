@@ -5,21 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null;
+    public static GameManager Instance = null;
 
     // Variables globales
 
     public static int choice = 0;
     public static int level = 0;
-    public static int rate = 0;
+    public static int rate = 30;
     public static int totalLevel = 3;
 
     void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
             DontDestroyOnLoad(gameObject);
-            instance = this;
+            Instance = this;
         } else
         {
             Destroy(gameObject);
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+      
     }
 
     // Update is called once per frame
@@ -41,4 +41,5 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
 }

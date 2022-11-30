@@ -39,17 +39,29 @@ public class Choice : MonoBehaviour
 
     void UpdateRate(string tag)
     {
-        if(tag == goodChoice)
+        Debug.Log("in updaterate");
+        if (tag == goodChoice || tag == neutralChoice && globalRate >= 0 && globalRate < (maxScore * GameManager.totalLevel))
         {
-            if(globalRate <= 0 && globalRate < (maxScore * GameManager.totalLevel))
-            globalRate += maxScore;
-        } else if(tag == neutralChoice)
-        {
-            globalRate += minScore;
-        } else if (tag == badChoice)
-        {
-            globalRate += -maxScore;
+            Debug.Log("control");
+            if (tag == goodChoice)
+            {
+                Debug.Log("good");
+                globalRate += maxScore;
+                Debug.Log(GameManager.rate);
+            }
+            else
+            {
+                Debug.Log("neutral");
+                globalRate += minScore;
+            }
         }
+
+        if (tag == badChoice && globalRate >= maxScore)
+        {
+            Debug.Log("bad");
+            globalRate -= maxScore;
+        }
+        Debug.Log(GameManager.rate);
     }
 
     void AnimationSelection(int index)
