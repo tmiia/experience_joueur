@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static int choice = 0;
     public static int level = 0;
     public static int rate = 0;
+    public static int totalLevel = 3;
 
     void Awake()
     {

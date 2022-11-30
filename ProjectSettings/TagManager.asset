@@ -10,6 +10,9 @@ TagManager:
   - lamp
   - battery
   - memory
+  - goodChoice
+  - badChoice
+  - neutralChoice
   layers:
   - Default
   - TransparentFX
