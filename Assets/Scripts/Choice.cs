@@ -12,11 +12,9 @@ public class Choice : MonoBehaviour
     private string goodChoice = "goodChoice";
     private string badChoice = "badChoice";
     private string neutralChoice = "neutralChoice";
-    private int globalRate = GameManager.rate;
+    private int globalRate = GameManager.Instance.rate;
     private int maxScore = 15;
     private int minScore = 5;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -39,29 +37,24 @@ public class Choice : MonoBehaviour
 
     void UpdateRate(string tag)
     {
-        Debug.Log("in updaterate");
         if (tag == goodChoice || tag == neutralChoice && globalRate >= 0 && globalRate < (maxScore * GameManager.totalLevel))
         {
-            Debug.Log("control");
             if (tag == goodChoice)
             {
-                Debug.Log("good");
-                globalRate += maxScore;
-                Debug.Log(GameManager.rate);
+                GameManager.Instance.rate += maxScore;
+                Debug.Log(GameManager.Instance.rate);
             }
             else
             {
-                Debug.Log("neutral");
-                globalRate += minScore;
+                GameManager.Instance.rate += minScore;
             }
         }
 
         if (tag == badChoice && globalRate >= maxScore)
         {
-            Debug.Log("bad");
-            globalRate -= maxScore;
+            GameManager.Instance.rate -= maxScore;
         }
-        Debug.Log(GameManager.rate);
+        Debug.Log(GameManager.Instance.rate);
     }
 
     void AnimationSelection(int index)
