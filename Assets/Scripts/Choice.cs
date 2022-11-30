@@ -92,6 +92,7 @@ public class Choice : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E))
         {
             UpdateRate(listChoices[index].tag);
+            GameManager.ChangeLevel();
         }
     }
 

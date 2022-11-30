@@ -126,7 +126,7 @@ public class Character : MonoBehaviour
                 PickItem(collision.gameObject);
             } else
             {
-                TriggerMemory(GameManager.level);
+                TriggerMemory(GameManager.currentLevel);
             }
             Destroy(collision.gameObject);
         }
