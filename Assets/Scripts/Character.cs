@@ -105,6 +105,11 @@ public class Character : MonoBehaviour
             life = value;
         }
     }
+    void TriggerMemory(int level)
+    {
+        string memory = "memory-" + level.ToString();
+        GameManager.ChangeScene(memory);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -116,7 +121,13 @@ public class Character : MonoBehaviour
             UpdateLife(-5);
         } else if (collision.gameObject.layer == collectibleLayer)
         {
-            PickItem(collision.gameObject);
+            if (collision.gameObject.tag != "memory")
+            {
+                PickItem(collision.gameObject);
+            } else
+            {
+                TriggerMemory(GameManager.level);
+            }
             Destroy(collision.gameObject);
         }
     }

@@ -36,8 +36,8 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public static void ChangeScene (int sceneBuildIndex)
+    public static void ChangeScene (string sceneName)
     {
-        SceneManager.LoadScene(sceneBuildIndex);
+        SceneManager.LoadScene(sceneName);
     }
 }
