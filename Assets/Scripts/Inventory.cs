@@ -7,17 +7,6 @@ public class Inventory : MonoBehaviour
 {
     private static List<GameObject> listInventoryItems = new List<GameObject>();
 
-    void Awake()
-    {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("inventory");
-
-        if (objs.Length > 1)
-        {
-            Destroy(this.gameObject);
-        }
-
-        DontDestroyOnLoad(this.gameObject);
-    }
     private void Start()
     {
         GameObject inventory = GameObject.Find("InventoryContainer");

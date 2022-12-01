@@ -14,6 +14,7 @@ TagManager:
   - badChoice
   - neutralChoice
   - pauseMenu
+  - inventory
   layers:
   - Default
   - TransparentFX
