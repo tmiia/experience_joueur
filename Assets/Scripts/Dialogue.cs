@@ -10,6 +10,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private string text;
     private List<GameObject> listDialogues = new List<GameObject>();
     private int dialogueIndex = 1;
+    [SerializeField] private GameObject choicesContainer;
 
     // Start is called before the first frame update
     void Start()
@@ -30,12 +31,17 @@ public class Dialogue : MonoBehaviour
         PlayNextDialogue();
     }
 
+    IEnumerator MemoryTiming()
+    {
+        yield return new WaitForSeconds(10);
+    }
+
 
     public void PlayNextDialogue()
     {
         if (Input.GetKeyDown(KeyCode.E) && dialogueIndex <= listDialogues.Count)
         {
-            Debug.Log("inna di E press key");
+            Debug.Log(dialogueIndex);
             for (int j = 0; j < listDialogues.Count; j++)
             {
                 if (j == dialogueIndex)
@@ -50,6 +56,12 @@ public class Dialogue : MonoBehaviour
                 }
             }
             dialogueIndex++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && dialogueIndex == (listDialogues.Count + 1))
+        {
+            Debug.Log("== t'as capte");
+            choicesContainer.SetActive(true);
         }
     }
 

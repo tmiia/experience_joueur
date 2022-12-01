@@ -31,8 +31,8 @@ public class Choice : MonoBehaviour
     void Update()
     {
         SelectChoice();
-      
     }
+
 
     void UpdateRate(string tag)
     {
@@ -73,27 +73,29 @@ public class Choice : MonoBehaviour
 
     void SelectChoice()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (index >= 0 && index < listChoices.Count - 1)
+
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                index += 1;
-                AnimationSelection(index);
+                if (index >= 0 && index < listChoices.Count - 1)
+                {
+                    index += 1;
+                    AnimationSelection(index);
+                }
             }
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (index <= listChoices.Count - 1 && index > 0)
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                index -= 1;
-                AnimationSelection(index);
+                if (index <= listChoices.Count - 1 && index > 0)
+                {
+                    index -= 1;
+                    AnimationSelection(index);
+                }
             }
-        }
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            UpdateRate(listChoices[index].tag);
-            GameManager.ChangeLevel();
-        }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log(GameObject.Find("Choices").activeSelf);
+                UpdateRate(listChoices[index].tag);
+                GameManager.ChangeLevel();
+            }
     }
 
 }
