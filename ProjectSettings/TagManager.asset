@@ -13,6 +13,7 @@ TagManager:
   - goodChoice
   - badChoice
   - neutralChoice
+  - pauseMenu
   layers:
   - Default
   - TransparentFX

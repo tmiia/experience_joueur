@@ -8,9 +8,19 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUi;
 
-    private string NameMenu = "menu";
+    private string nameMenu = "menu";
 
-    // Update is called once per frame
+    void Awake()
+    {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("pauseMenu");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -40,7 +50,7 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(NameMenu);
+        SceneManager.LoadScene(nameMenu);
     }
     public void QuitGame()
     {
