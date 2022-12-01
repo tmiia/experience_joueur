@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/menu.unity
     guid: 65a7af3285d8645519c8bb9f3f1f3c91
+  - enabled: 1
+    path: Assets/Scenes/memory-1.unity
+    guid: 33d3c75843ed24b38ac6e808a2a966ac
+  - enabled: 1
+    path: Assets/Scenes/memory-2.unity
+    guid: 1a9ad499d524947b6a3f0fa47a142c58
+  - enabled: 1
+    path: Assets/Scenes/level-2.unity
+    guid: 0bccbd130d17847e2a11c9631700d665
   m_configObjects: {}

@@ -13,8 +13,12 @@ public class GameManager : MonoBehaviour
     public static int choice = 0;
     public static int currentLevel = 0;
     public static int achivedLevel = 0;
-    public int rate = 0;
     public static int totalLevel = 3;
+
+    // Gestion note
+    public int rate = 15;
+    public static int maxScore = 15;
+    public static int minScore = 5;
 
     void Awake()
     {
@@ -27,21 +31,24 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-      
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public static void ChangeScene (string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        
+            SceneManager.LoadScene(sceneName);
+    }
+    public static void Ending()
+    {
+        if (GameManager.Instance.rate < (maxScore * 2))
+        {
+            Debug.Log("bad end");
+        } else if (GameManager.Instance.rate >= (maxScore * 2) && GameManager.Instance.rate < ((maxScore * 2) + maxScore))
+        {
+            Debug.Log("neutral end");
+        } else if (GameManager.Instance.rate >= ((maxScore * 2) + maxScore))
+        {
+            Debug.Log("good end");
+        }
     }
 
     public static void ChangeLevel()

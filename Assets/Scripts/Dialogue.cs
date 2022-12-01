@@ -46,12 +46,10 @@ public class Dialogue : MonoBehaviour
             {
                 if (j == dialogueIndex)
                 {
-                    Debug.Log("inna di true");
                     listDialogues[j].SetActive(true);
                 }
                 else
                 {
-                    Debug.Log("inna di false");
                     listDialogues[j].SetActive(false);
                 }
             }
@@ -60,7 +58,6 @@ public class Dialogue : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && dialogueIndex == (listDialogues.Count + 1))
         {
-            Debug.Log("== t'as capte");
             choicesContainer.SetActive(true);
         }
     }

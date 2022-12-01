@@ -12,8 +12,6 @@ public class Choice : MonoBehaviour
     private string goodChoice = "goodChoice";
     private string badChoice = "badChoice";
     private string neutralChoice = "neutralChoice";
-    private int maxScore = 15;
-    private int minScore = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -36,24 +34,23 @@ public class Choice : MonoBehaviour
 
     void UpdateRate(string tag)
     {
-        if (tag == goodChoice || tag == neutralChoice && GameManager.Instance.rate >= 0 && GameManager.Instance.rate < (maxScore * GameManager.totalLevel))
+        Debug.Log(GameManager.maxScore);
+        if (tag == goodChoice || tag == neutralChoice && GameManager.Instance.rate >= 0 && GameManager.Instance.rate < (GameManager.maxScore * GameManager.totalLevel))
         {
             if (tag == goodChoice)
             {
-                GameManager.Instance.rate += maxScore;
-                Debug.Log(GameManager.Instance.rate);
+                GameManager.Instance.rate += GameManager.maxScore;
             }
             else
             {
-                GameManager.Instance.rate += minScore;
+                GameManager.Instance.rate += GameManager.minScore;
             }
         }
 
-        if (tag == badChoice && GameManager.Instance.rate >= maxScore)
+        if (tag == badChoice && GameManager.Instance.rate >= GameManager.maxScore)
         {
-            GameManager.Instance.rate -= maxScore;
+            GameManager.Instance.rate -= GameManager.maxScore;
         }
-        Debug.Log(GameManager.Instance.rate);
     }
 
     void AnimationSelection(int index)
@@ -92,9 +89,15 @@ public class Choice : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log(GameObject.Find("Choices").activeSelf);
+             
                 UpdateRate(listChoices[index].tag);
-                GameManager.ChangeLevel();
+                if (GameManager.currentLevel == (GameManager.totalLevel - 1))
+                {
+                    GameManager.Ending();
+                } else
+                {
+                    GameManager.ChangeLevel();
+                }
             }
     }
 
