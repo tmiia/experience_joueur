@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
-//using Vector2 = UnityEngine.Vector2;
+using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
 public class Character : MonoBehaviour
@@ -27,7 +27,10 @@ public class Character : MonoBehaviour
     [SerializeField] private LayerMask groundedLayer;
     [SerializeField] private LayerMask deathZoneLayer;
 
+    Vector2 movement;
+
     private Rigidbody2D rb2D;
+    public Animator animator;
 
     void Awake()
     {
@@ -37,6 +40,13 @@ public class Character : MonoBehaviour
 
     void Update()
     {
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.x);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+
         Move();
         Jump();
     }
@@ -45,7 +55,7 @@ public class Character : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position = transform.position + Time.deltaTime * speed * Vector3.right; // deltatime = le temps qui s'est écoulé entre deux updates
+            transform.position = transform.position + Time.deltaTime * speed * Vector3.right;
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
