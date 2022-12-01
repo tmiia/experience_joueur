@@ -9,8 +9,8 @@ using Vector3 = UnityEngine.Vector3;
 public class Character : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 10;
-    [SerializeField] private float groundedDistance = 2f;
+    [SerializeField] private float jumpForce = 9;
+    [SerializeField] private float groundedDistance = 8f;
     [SerializeField] public int life = 5;
     [SerializeField] private int collectibleLayer = 6;
     [SerializeField] private bool lamp = false;
@@ -67,7 +67,7 @@ public class Character : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && (IsGrounded()))
         {
-            rb2D.velocity = new UnityEngine.Vector2(0, jumpForce);
+            rb2D.velocity = new Vector2(0, jumpForce);
         }
     }
 
