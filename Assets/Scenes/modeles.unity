@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 1912579032}
   - component: {fileID: 1912579031}
   m_Layer: 0
-  m_Name: glacePng
+  m_Name: Ennemy-ice
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -864,7 +864,7 @@ GameObject:
   - component: {fileID: 2115323317}
   - component: {fileID: 2115323316}
   m_Layer: 0
-  m_Name: roncesPng
+  m_Name: Ennemy-plant
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

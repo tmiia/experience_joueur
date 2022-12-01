@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
+using UnityEngine.Events;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -27,6 +28,7 @@ public class Character : MonoBehaviour
     [SerializeField] private LayerMask groundedLayer;
     [SerializeField] private LayerMask deathZoneLayer;
 
+
     Vector2 movement;
 
     private Rigidbody2D rb2D;
@@ -35,7 +37,7 @@ public class Character : MonoBehaviour
     void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
-    
+
     }
 
     void Update()
@@ -46,6 +48,11 @@ public class Character : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.x);
         animator.SetFloat("Speed", movement.magnitude);
+
+        if (IsGrounded())
+        {
+            animator.SetBool("IsJumping", false);
+        }
 
         Move();
         Jump();
@@ -65,10 +72,16 @@ public class Character : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && (IsGrounded()))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb2D.velocity = new Vector2(0, jumpForce);
-        }
+            animator.SetBool("IsJumping", true);
+
+            if (IsGrounded())
+            {
+                rb2D.velocity = new Vector2(0, jumpForce);
+            }
+                
+        } 
     }
 
     bool IsGrounded()
