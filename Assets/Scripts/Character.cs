@@ -29,20 +29,12 @@ public class Character : MonoBehaviour
 
     private Rigidbody2D rb2D;
 
-    // Awake : l'intérêt est de paraméter l'objet lui-même (couleur, position), il se prépare
     void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
     
     }
 
-    // Start is called before the first frame update --> quand on fait le lien entre les objets
-    void Start()
-    {
-      
-    }
-
-    // Update is called once per frame
     void Update()
     {
         Move();
@@ -64,7 +56,7 @@ public class Character : MonoBehaviour
     private void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && (IsGrounded()))
-        { // avec GetKeyDown c'est au moment où j'appuie, et pas tant que j'appuie comme GetKey
+        {
             rb2D.velocity = new UnityEngine.Vector2(0, jumpForce);
         }
     }
@@ -139,13 +131,16 @@ public class Character : MonoBehaviour
         if (itemTag == itemLifeFirst)
         {
             battery = true;
+            Inventory.DisplayInventory(itemTag);
         } else if (itemTag == itemLifeSecond)
         {
             lamp = true;
+            Inventory.DisplayInventory(itemTag);
         }
         if (battery && lamp)
         {
             UpdateLife(15, true);
+            Inventory.MaskInventory();
         }
     }
 }
