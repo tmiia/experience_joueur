@@ -8,8 +8,6 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject PauseMenuContainer;
 
-    private string nameMenu = "menu";
-
     void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("pauseMenu");
@@ -25,7 +23,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("lalala");
 
             if (GameIsPaused)
             {
