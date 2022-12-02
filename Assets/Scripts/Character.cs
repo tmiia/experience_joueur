@@ -38,7 +38,6 @@ public class Character : MonoBehaviour
     void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
-
     }
 
     void Update()
@@ -49,6 +48,8 @@ public class Character : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.x);
         animator.SetFloat("Speed", movement.magnitude);
+
+        
 
         if (IsGrounded())
         {
@@ -76,6 +77,10 @@ public class Character : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (!Input.GetKey(KeyCode.RightArrow) || !Input.GetKey(KeyCode.LeftArrow))
+            {
+                speed = 0;
+            }
             animator.SetBool("IsJumping", true);
 
             if (IsGrounded())
