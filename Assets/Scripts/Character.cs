@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -101,6 +102,7 @@ public class Character : MonoBehaviour
     private void GameOver()
     {
         character.SetActive(false);
+        SceneManager.LoadScene("gameOver");
     }
 
     private void UpdateLife(int value, bool isCompleted = false)
