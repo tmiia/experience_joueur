@@ -13,6 +13,7 @@ public class Choice : MonoBehaviour
     private string badChoice = "badChoice";
     private string neutralChoice = "neutralChoice";
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,11 +60,13 @@ public class Choice : MonoBehaviour
         {
             if(i == index)
             {
-                listChoices[i].GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+                //listChoices[i].GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+                listChoices[i].GetComponent<Animator>().SetBool("IsHovered", true);
             }
             else
             {
-                listChoices[i].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+                //listChoices[i].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+                listChoices[i].GetComponent<Animator>().SetBool("IsHovered", false);
             }
         }
     }
