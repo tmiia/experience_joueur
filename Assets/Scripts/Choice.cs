@@ -7,12 +7,13 @@ public class Choice : MonoBehaviour
     [SerializeField] private string text;
     //[SerializeField] private string type;
     private int score;
-    private List<GameObject> listChoices = new List<GameObject>();
     [SerializeField] private int index = 0;
     private string goodChoice = "goodChoice";
     private string badChoice = "badChoice";
     private string neutralChoice = "neutralChoice";
 
+    private List<GameObject> listChoices = new List<GameObject>();
+    private List<GameObject> listCinematics = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,12 @@ public class Choice : MonoBehaviour
         {
             GameObject child = originalGameObject.transform.GetChild(i).gameObject;
             listChoices.Add(child);
+        }
+        GameObject cinematicOptions = GameObject.Find("Results");
+        for (int i = 0; i < cinematicOptions.transform.childCount; i++)
+        {
+            GameObject child = cinematicOptions.transform.GetChild(i).gameObject;
+            listCinematics.Add(child);
         }
         AnimationSelection(0);
     }
@@ -60,14 +67,35 @@ public class Choice : MonoBehaviour
         {
             if(i == index)
             {
-                //listChoices[i].GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
                 listChoices[i].GetComponent<Animator>().SetBool("IsHovered", true);
             }
             else
             {
-                //listChoices[i].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
                 listChoices[i].GetComponent<Animator>().SetBool("IsHovered", false);
             }
+        }
+    }
+
+    void DisplayCinematic(string tag)
+    {
+        for (int i = 0; i < listCinematics.Count; i++)
+        {
+            if (listCinematics[i].gameObject.tag == tag)
+            {
+                listCinematics[i].SetActive(true);
+            }
+        }
+    }
+
+    public void GoToNextLevel()
+    {
+        if (GameManager.currentLevel == (GameManager.totalLevel - 1))
+        {
+            GameManager.Ending();
+        }
+        else
+        {
+            GameManager.ChangeLevel();
         }
     }
 
@@ -92,15 +120,8 @@ public class Choice : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
-             
+                DisplayCinematic(listChoices[index].tag);
                 UpdateRate(listChoices[index].tag);
-                if (GameManager.currentLevel == (GameManager.totalLevel - 1))
-                {
-                    GameManager.Ending();
-                } else
-                {
-                    GameManager.ChangeLevel();
-                }
             }
     }
 
