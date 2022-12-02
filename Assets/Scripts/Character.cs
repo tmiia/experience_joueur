@@ -57,6 +57,7 @@ public class Character : MonoBehaviour
 
         Move();
         Jump();
+        Crawl();
     }
 
     private void Move()
@@ -82,7 +83,18 @@ public class Character : MonoBehaviour
                 rb2D.velocity = new Vector2(0, jumpForce);
             }
                 
-        } 
+        }
+    }
+
+    private void Crawl()
+    {
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            animator.SetBool("IsCrawling", true);
+        } else
+        {
+            animator.SetBool("IsCrawling", false);
+        }
     }
 
     bool IsGrounded()
