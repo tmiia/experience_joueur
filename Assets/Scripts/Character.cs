@@ -47,9 +47,9 @@ public class Character : MonoBehaviour
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.x);
-        animator.SetFloat("Speed", movement.magnitude);
 
-        
+        animator.SetFloat("Speed", 0);
+
 
         if (IsGrounded())
         {
@@ -66,21 +66,19 @@ public class Character : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.position = transform.position + Time.deltaTime * speed * Vector3.right;
+            animator.SetFloat("Speed", movement.magnitude);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position = transform.position + Time.deltaTime * speed * Vector3.left;
+            animator.SetFloat("Speed", movement.magnitude);
         }
     }
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
-            if (!Input.GetKey(KeyCode.RightArrow) || !Input.GetKey(KeyCode.LeftArrow))
-            {
-                speed = 0;
-            }
             animator.SetBool("IsJumping", true);
 
             if (IsGrounded())
