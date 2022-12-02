@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 33911877}
   m_Layer: 0
   m_Name: Choice-3
-  m_TagString: badChoice
+  m_TagString: neutralChoice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1536,7 +1536,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &727930768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2904,7 +2904,7 @@ GameObject:
   - component: {fileID: 1312206164}
   m_Layer: 0
   m_Name: Choice-1
-  m_TagString: badChoice
+  m_TagString: goodChoice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
