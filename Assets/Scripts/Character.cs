@@ -43,13 +43,12 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
+
+        GameObject spiritList = GameObject.Find("Spirits");
+        for (int i = 0; i < spiritList.transform.childCount; i++)
         {
-            GameObject spiritList = GameObject.Find("Spirits");
-            for (int i = 0; i < spiritList.transform.childCount; i++)
-            {
-                GameObject dialogue = spiritList.transform.GetChild(i).gameObject;
-                listSpirits.Add(dialogue);
-            }
+            GameObject dialogue = spiritList.transform.GetChild(i).gameObject;
+            listSpirits.Add(dialogue);
         }
     }
 
@@ -193,7 +192,19 @@ public class Character : MonoBehaviour
                 TriggerMemory(GameManager.currentLevel);
             }
             Destroy(collision.gameObject);
+        } else if (collision.gameObject.tag == "loader")
+        {
+            GameObject dialogueScene = GameObject.Find("DialoguesContainer").transform.GetChild(0).gameObject;
+            dialogueScene.SetActive(true);
+
+            StartCoroutine(MemoryTiming());
         }
+    }
+    IEnumerator MemoryTiming()
+    {
+        yield return new WaitForSeconds(3);
+
+        GameManager.ChangeLevel();
     }
 
     private void PickItem(GameObject item)
