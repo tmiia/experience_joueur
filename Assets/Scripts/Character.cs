@@ -13,7 +13,7 @@ public class Character : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 9;
     [SerializeField] private float groundedDistance = 8f;
-    [SerializeField] public int life = 5;
+    [SerializeField] public int life = 15;
     [SerializeField] private int collectibleLayer = 6;
     [SerializeField] private bool lamp = false;
     [SerializeField] private bool battery = false;
@@ -29,6 +29,7 @@ public class Character : MonoBehaviour
     [SerializeField] private LayerMask groundedLayer;
     [SerializeField] private LayerMask deathZoneLayer;
 
+    private List<GameObject> listSpirits = new List<GameObject>();
 
     Vector2 movement;
 
@@ -38,6 +39,18 @@ public class Character : MonoBehaviour
     void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        {
+            GameObject spiritList = GameObject.Find("Spirits");
+            for (int i = 0; i < spiritList.transform.childCount; i++)
+            {
+                GameObject dialogue = spiritList.transform.GetChild(i).gameObject;
+                listSpirits.Add(dialogue);
+            }
+        }
     }
 
     void Update()
@@ -114,6 +127,22 @@ public class Character : MonoBehaviour
         }
     }
 
+    private void UpdateSpirits()
+    {
+        if (life == 15)
+        {
+            listSpirits[1].SetActive(true);
+            listSpirits[2].SetActive(true);
+        } else if (life == 10)
+        {
+            listSpirits[2].SetActive(false);
+        } else if (life == 5)
+        {
+            listSpirits[1].SetActive(false);
+        }
+
+    }
+
     private void GameOver()
     {
         character.SetActive(false);
@@ -125,6 +154,8 @@ public class Character : MonoBehaviour
         if(life > 0 && !isCompleted)
         {
             life += value;
+            UpdateSpirits();
+
             if(life == 0)
             {
                 GameOver();
@@ -137,6 +168,7 @@ public class Character : MonoBehaviour
             life = value;
         }
     }
+
     void TriggerMemory(int level)
     {
         string memory = "memory-" + level.ToString();
