@@ -15,6 +15,7 @@ TagManager:
   - neutralChoice
   - pauseMenu
   - inventory
+  - loader
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Water
   - UI
   - collectible
-  - 
+  - loader
   - 
   - 
   - 
