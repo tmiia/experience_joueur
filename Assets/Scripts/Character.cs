@@ -38,7 +38,6 @@ public class Character : MonoBehaviour
     void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
-
     }
 
     void Update()
@@ -50,6 +49,8 @@ public class Character : MonoBehaviour
         animator.SetFloat("Vertical", movement.x);
         animator.SetFloat("Speed", movement.magnitude);
 
+        
+
         if (IsGrounded())
         {
             animator.SetBool("IsJumping", false);
@@ -57,6 +58,7 @@ public class Character : MonoBehaviour
 
         Move();
         Jump();
+        Crawl();
     }
 
     private void Move()
@@ -75,6 +77,10 @@ public class Character : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (!Input.GetKey(KeyCode.RightArrow) || !Input.GetKey(KeyCode.LeftArrow))
+            {
+                speed = 0;
+            }
             animator.SetBool("IsJumping", true);
 
             if (IsGrounded())
@@ -82,7 +88,18 @@ public class Character : MonoBehaviour
                 rb2D.velocity = new Vector2(0, jumpForce);
             }
                 
-        } 
+        }
+    }
+
+    private void Crawl()
+    {
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            animator.SetBool("IsCrawling", true);
+        } else
+        {
+            animator.SetBool("IsCrawling", false);
+        }
     }
 
     bool IsGrounded()
