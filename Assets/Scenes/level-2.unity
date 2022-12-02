@@ -836,9 +836,9 @@ GameObject:
   m_Component:
   - component: {fileID: 148189853}
   - component: {fileID: 148189852}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: coin2
-  m_TagString: Untagged
+  m_TagString: plateform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1116,9 +1116,9 @@ GameObject:
   - component: {fileID: 234877723}
   - component: {fileID: 234877724}
   - component: {fileID: 234877725}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: coin2 (1)
-  m_TagString: Untagged
+  m_TagString: plateform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1190,8 +1190,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &234877725
-BoxCollider2D:
+--- !u!70 &234877725
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1203,19 +1203,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 18.32, y: 15.93}
-    newSize: {x: 18.32, y: 15.93}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 18.32, y: 15.93}
-  m_EdgeRadius: 0
+  m_Offset: {x: -1, y: -0.36}
+  m_Size: {x: 16, y: 13.7}
+  m_Direction: 1
 --- !u!1 &257240921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,9 +1217,9 @@ GameObject:
   - component: {fileID: 257240922}
   - component: {fileID: 257240923}
   - component: {fileID: 257240924}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: coin3 (4)
-  m_TagString: Untagged
+  m_TagString: plateform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1422,9 +1412,9 @@ GameObject:
   - component: {fileID: 280225268}
   - component: {fileID: 280225269}
   - component: {fileID: 280225270}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: coin3 (3)
-  m_TagString: Untagged
+  m_TagString: plateform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1643,9 +1633,11 @@ GameObject:
   m_Component:
   - component: {fileID: 290047938}
   - component: {fileID: 290047937}
-  m_Layer: 0
+  - component: {fileID: 290047940}
+  - component: {fileID: 290047939}
+  m_Layer: 3
   m_Name: chair (1)
-  m_TagString: Untagged
+  m_TagString: plateform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1717,6 +1709,58 @@ Transform:
   m_Father: {fileID: 413172421}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &290047939
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290047936}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -3.634879}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.8, y: 16.66}
+    newSize: {x: 7.8, y: 16.66}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 7.8, y: 9.390242}
+  m_EdgeRadius: 0
+--- !u!61 &290047940
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290047936}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.8839447, y: -0.5971174}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.8, y: 16.66}
+    newSize: {x: 7.8, y: 16.66}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.0321107, y: 15.465765}
+  m_EdgeRadius: 0
 --- !u!1 &308455120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1923,9 +1967,9 @@ GameObject:
   - component: {fileID: 318781993}
   - component: {fileID: 318781994}
   - component: {fileID: 318781995}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: mur (1)
-  m_TagString: Untagged
+  m_TagString: plateform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3908,9 +3952,9 @@ GameObject:
   m_Component:
   - component: {fileID: 709390485}
   - component: {fileID: 709390484}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: mur
-  m_TagString: Untagged
+  m_TagString: plateform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5055,9 +5099,10 @@ GameObject:
   m_Component:
   - component: {fileID: 955107254}
   - component: {fileID: 955107253}
-  m_Layer: 0
+  - component: {fileID: 955107255}
+  m_Layer: 3
   m_Name: table
-  m_TagString: Untagged
+  m_TagString: plateform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5129,6 +5174,32 @@ Transform:
   m_Father: {fileID: 413172421}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &955107255
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955107252}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 22.83, y: 13.243183}
+    newSize: {x: 22.83, y: 13.243183}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 22.83, y: 13.243183}
+  m_EdgeRadius: 0
 --- !u!1 &984937471
 GameObject:
   m_ObjectHideFlags: 0
@@ -6600,9 +6671,9 @@ GameObject:
   - component: {fileID: 1355297223}
   - component: {fileID: 1355297224}
   - component: {fileID: 1355297225}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: coin3 (2)
-  m_TagString: Untagged
+  m_TagString: plateform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6674,8 +6745,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1355297225
-BoxCollider2D:
+--- !u!70 &1355297225
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6687,19 +6758,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 14.87, y: 14.8}
-    newSize: {x: 14.87, y: 14.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 14.87, y: 14.8}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.53, y: -5.24}
+  m_Size: {x: 12.64, y: 6.64}
+  m_Direction: 1
 --- !u!1 &1361620729
 GameObject:
   m_ObjectHideFlags: 0
@@ -9116,9 +9177,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1945489414}
   - component: {fileID: 1945489413}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: plafondDebut
-  m_TagString: Untagged
+  m_TagString: plateform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
