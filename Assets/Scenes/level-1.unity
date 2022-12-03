@@ -6934,7 +6934,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &911172032
 GameObject:
@@ -8600,10 +8600,11 @@ MonoBehaviour:
   speed: 15
   jumpForce: 35
   groundedDistance: 10
-  life: 5
+  life: 15
   collectibleLayer: 6
   lamp: 0
   battery: 0
+  characterLight: {fileID: 0}
   itemLifeSecond: lamp
   itemLifeFirst: battery
   character: {fileID: 1037836522}
@@ -8729,7 +8730,7 @@ Transform:
   - {fileID: 236517860}
   - {fileID: 68686411}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1049549954
 GameObject:
@@ -11067,7 +11068,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.5514863, g: 0.616422, b: 0.764151, a: 1}
-  m_Intensity: 9.9
+  m_Intensity: 0.14
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 55802b8a00000000
@@ -11142,7 +11143,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1247916920
 GameObject:
@@ -12056,7 +12057,7 @@ Transform:
   - {fileID: 184924828}
   - {fileID: 958404048}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1316880293
 GameObject:
@@ -12069,7 +12070,7 @@ GameObject:
   - component: {fileID: 1316880295}
   - component: {fileID: 1316880294}
   m_Layer: 0
-  m_Name: Light 2D
+  m_Name: CharacterLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12251,7 +12252,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1324958331
 GameObject:
@@ -13297,7 +13298,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13319,7 +13320,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -13342,7 +13343,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1488756885
 BoxCollider2D:
@@ -15026,7 +15027,7 @@ Transform:
   - {fileID: 1327206659}
   - {fileID: 1176930754}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1693554570
 GameObject:

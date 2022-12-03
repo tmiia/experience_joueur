@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
     [SerializeField] private int collectibleLayer = 6;
     [SerializeField] private bool lamp = false;
     [SerializeField] private bool battery = false;
+    [SerializeField] private UnityEngine.Rendering.Universal.Light2D characterLight;
 
 
     [SerializeField] private string itemLifeSecond = "lamp";
@@ -43,7 +44,8 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
-
+        characterLight = GameObject.Find("CharacterLight").GetComponent<UnityEngine.Rendering.Universal.Light2D>();
+        characterLight.pointLightOuterRadius = 43;
         GameObject spiritList = GameObject.Find("Spirits");
         for (int i = 0; i < spiritList.transform.childCount; i++)
         {
@@ -130,13 +132,16 @@ public class Character : MonoBehaviour
     {
         if (life == 15)
         {
+            characterLight.pointLightOuterRadius = 43;
             listSpirits[1].SetActive(true);
             listSpirits[2].SetActive(true);
         } else if (life == 10)
         {
+            characterLight.pointLightOuterRadius = 33;
             listSpirits[2].SetActive(false);
         } else if (life == 5)
         {
+            characterLight.pointLightOuterRadius = 23;
             listSpirits[1].SetActive(false);
         }
 
