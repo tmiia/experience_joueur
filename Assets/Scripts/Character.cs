@@ -170,6 +170,7 @@ public class Character : MonoBehaviour
         } else if (isCompleted)
         {
             life = value;
+            UpdateSpirits();
         }
     }
 
