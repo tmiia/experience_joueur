@@ -2513,7 +2513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 15
-  speed: 2
+  speed: 5
   isGrounded: 0
   isCrawling: 0
   groundCheckRadius: 0.2
