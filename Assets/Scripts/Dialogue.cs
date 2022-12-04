@@ -11,6 +11,7 @@ public class Dialogue : MonoBehaviour
     private List<GameObject> listDialogues = new List<GameObject>();
     private int dialogueIndex = 1;
     [SerializeField] private GameObject choicesContainer;
+    [SerializeField] private GameObject loader;
 
     // Start is called before the first frame update
     void Start()
@@ -56,9 +57,13 @@ public class Dialogue : MonoBehaviour
             dialogueIndex++;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && dialogueIndex == (listDialogues.Count + 1))
+        if (Input.GetKeyDown(KeyCode.E) && dialogueIndex == (listDialogues.Count + 1) && GameManager.Instance.choiceDone == false)
         {
             choicesContainer.SetActive(true);
+
+        }  else if (Input.GetKeyDown(KeyCode.E) && dialogueIndex == (listDialogues.Count + 1) && GameManager.Instance.choiceDone == true)
+        {
+            loader.SetActive(true);
         }
     }
 

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static int currentLevel = 0;
     public static int achivedLevel = 0;
     public static int totalLevel = 3;
+    public bool choiceDone = false;
 
     // Gestion note
     public int rate = 15;
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     public static void ChangeScene (string sceneName)
     {
-        
+        Debug.Log("change scene");
             SceneManager.LoadScene(sceneName);
     }
     public static void Ending()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Choice : MonoBehaviour
 {
     [SerializeField] private string text;
+    [SerializeField] private GameObject blockChoices;
     //[SerializeField] private string type;
     private int score;
     [SerializeField] private int index = 0;
@@ -18,6 +19,7 @@ public class Choice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         GameObject originalGameObject = GameObject.Find("Choices");
         for (int i = 0; i < originalGameObject.transform.childCount; i++)
         {
@@ -25,12 +27,14 @@ public class Choice : MonoBehaviour
             listChoices.Add(child);
         }
         GameObject cinematicOptions = GameObject.Find("Results");
+        Debug.Log(cinematicOptions);
         for (int i = 0; i < cinematicOptions.transform.childCount; i++)
         {
             GameObject child = cinematicOptions.transform.GetChild(i).gameObject;
             listCinematics.Add(child);
         }
         AnimationSelection(0);
+        
     }
 
     // Update is called once per frame
@@ -78,6 +82,7 @@ public class Choice : MonoBehaviour
 
     void DisplayCinematic(string tag)
     {
+        blockChoices.SetActive(false);
         for (int i = 0; i < listCinematics.Count; i++)
         {
             if (listCinematics[i].gameObject.tag == tag)
@@ -95,6 +100,7 @@ public class Choice : MonoBehaviour
         }
         else
         {
+            GameManager.Instance.choiceDone = false;
             GameManager.ChangeLevel();
         }
     }
@@ -120,6 +126,7 @@ public class Choice : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
+                GameManager.Instance.choiceDone = true;
                 DisplayCinematic(listChoices[index].tag);
                 UpdateRate(listChoices[index].tag);
             }

@@ -10,60 +10,43 @@ using Vector3 = UnityEngine.Vector3;
 
 public class Character : MonoBehaviour
 {
-
-    // Comportement du personnage
-
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float jumpForce = 9;
+    [SerializeField] private float groundedDistance = 8f;
     [SerializeField] public int life = 15;
-
-    public float speed = 2;
-    private float jumpPower = 250;
-    private bool isGrounded = false;
-    private bool isJumping = false;
-    private bool isCrawling = false;
-    private float groundCheckRadius = 0.2f;
-    private float topCheckRadius = 0.2f;
-
-    //// Environnement
-
-    private float horizontalMove;
-    private float verticalMove;
-    private List<GameObject> listSpirits = new List<GameObject>();
-
     [SerializeField] private int collectibleLayer = 6;
     [SerializeField] private bool lamp = false;
     [SerializeField] private bool battery = false;
-    //[SerializeField] private UnityEngine.Rendering.Universal.Light2D characterLight;
+    [SerializeField] private UnityEngine.Rendering.Universal.Light2D characterLight;
 
 
     [SerializeField] private string itemLifeSecond = "lamp";
     [SerializeField] private string itemLifeFirst = "battery";
 
-    //Vector2 movement;
 
-    public Animator animator;
-    private Rigidbody2D rb2D;
-    private Rigidbody2D rb;
+    [SerializeField] private GameObject character;
 
-    [SerializeField] Collider2D standingCollider;
-    [SerializeField] Transform groundCheck;
-    [SerializeField] Transform topCheck;
+
     [SerializeField] private LayerMask groundedLayer;
     [SerializeField] private LayerMask deathZoneLayer;
 
+    private List<GameObject> listSpirits = new List<GameObject>();
+
+    Vector2 movement;
+
+    private Rigidbody2D rb2D;
+    public Animator animator;
 
     void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
+    private void Start()
     {
-        Debug.Log(this);
-        //characterLight = GameObject.Find("CharacterLight").GetComponent<UnityEngine.Rendering.Universal.Light2D>();
-        //characterLight.pointLightOuterRadius = 43;
-
+        characterLight = GameObject.Find("CharacterLight").GetComponent<UnityEngine.Rendering.Universal.Light2D>();
+        characterLight.pointLightOuterRadius = 43;
         GameObject spiritList = GameObject.Find("Spirits");
-
         for (int i = 0; i < spiritList.transform.childCount; i++)
         {
             GameObject dialogue = spiritList.transform.GetChild(i).gameObject;
@@ -73,88 +56,76 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal");
-        verticalMove = Input.GetAxisRaw("Vertical");
-        animator.SetFloat("yVelocity", rb.velocity.y);
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetButtonDown("Crawl"))
-        {
-            isCrawling = true;
-        }
-        else if (Input.GetButtonUp("Crawl"))
-        {
-            isCrawling = false;
-        }
-        if (animator.GetFloat("yVelocity") > 0)
-        {
-            animator.SetBool("IsJumping", true);
-        }
-        else
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.x);
+
+        animator.SetFloat("Speed", 0);
+
+
+        if (IsGrounded())
         {
             animator.SetBool("IsJumping", false);
         }
-        if (isGrounded)
-        {
-            animator.SetBool("IsGrounded", true);
-        }
-        else
-        {
-            animator.SetBool("IsGrounded", false);
-        }
 
-        //animator.SetFloat("Horizontal", horizontalMove);
-        //animator.SetFloat("Vertical", verticalMove);
-
-        animator.SetFloat("Speed", 0);
-    }
-
-    void FixedUpdate()
-    {
-        GroundCheck();
-        //Move(horizontalMove);
-        Crawl(isCrawling);
+        Move();
         Jump();
-
+        Crawl();
     }
 
-    //    private void Move(float direction)
-    //    {
-    //        float xAvis = direction * speed * 100 * Time.fixedDeltaTime;
-    //        Vector2 targetSpeed = new Vector2(xAvis, rb.velocity.y);
-
-    //        rb.velocity = targetSpeed;
-    //    }
+    private void Move()
+    {
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.position = transform.position + Time.deltaTime * speed * Vector3.right;
+            animator.SetFloat("Speed", movement.magnitude);
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.position = transform.position + Time.deltaTime * speed * Vector3.left;
+            animator.SetFloat("Speed", movement.magnitude);
+        }
+    }
 
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetKey(KeyCode.Space))
         {
-            isJumping = true;
-            rb.AddForce(new Vector2(0f, jumpPower));
-        }
-    }
+            animator.SetBool("IsJumping", true);
 
-    private void Crawl(bool isCrawling)
-    {
-        standingCollider.enabled = !isCrawling;
-
-        if (Physics2D.OverlapCircle(topCheck.position, topCheckRadius, groundedLayer))
-        {
-            if (!isCrawling)
+            if (IsGrounded())
             {
-                standingCollider.enabled = false;
+                rb2D.velocity = new Vector2(0, jumpForce);
             }
+
         }
     }
 
-    private void GroundCheck()
+    private void Crawl()
     {
-        isGrounded = false;
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundCheckRadius, groundedLayer);
-        if (colliders.Length > 0)
+        if (Input.GetKey(KeyCode.DownArrow))
         {
-            isGrounded = true;
+            animator.SetBool("IsCrawling", true);
+        }
+        else
+        {
+            animator.SetBool("IsCrawling", false);
+        }
+    }
+
+    bool IsGrounded()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.down, groundedDistance, groundedLayer);
+
+        if (hit.collider != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -162,18 +133,18 @@ public class Character : MonoBehaviour
     {
         if (life == 15)
         {
-            //characterLight.pointLightOuterRadius = 43;
+            characterLight.pointLightOuterRadius = 43;
             listSpirits[1].SetActive(true);
             listSpirits[2].SetActive(true);
         }
         else if (life == 10)
         {
-            //characterLight.pointLightOuterRadius = 33;
+            characterLight.pointLightOuterRadius = 33;
             listSpirits[2].SetActive(false);
         }
         else if (life == 5)
         {
-            //characterLight.pointLightOuterRadius = 23;
+            characterLight.pointLightOuterRadius = 23;
             listSpirits[1].SetActive(false);
         }
 
@@ -181,6 +152,7 @@ public class Character : MonoBehaviour
 
     private void GameOver()
     {
+        character.SetActive(false);
         SceneManager.LoadScene("gameOver");
     }
 

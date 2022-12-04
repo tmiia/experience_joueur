@@ -100,15 +100,19 @@ public class Player : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
 
-        //animator.SetFloat("Speed", 0);
+        GroundCheck();
+        Move(movement.x);
+        Crawl(isCrawling); 
+        Jump();
+
 
     }
     private void FixedUpdate()
     {
-        GroundCheck();
-        Move(movement.x);
-        Crawl(isCrawling);
-        Jump();
+        //GroundCheck();
+        //Move(movement.x);
+        //Crawl(isCrawling);
+        //Jump();
 
     }
 
@@ -135,7 +139,6 @@ public class Player : MonoBehaviour
         //{
         //    animator.SetFloat("Speed", 0);
         //} 
-        Debug.Log(movement.magnitude);
 
     }
 
