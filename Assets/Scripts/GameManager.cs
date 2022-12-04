@@ -43,12 +43,15 @@ public class GameManager : MonoBehaviour
         if (GameManager.Instance.rate < (maxScore * 2))
         {
             Debug.Log("bad end");
+            GameManager.ChangeScene("ending-bad");
         } else if (GameManager.Instance.rate >= (maxScore * 2) && GameManager.Instance.rate < ((maxScore * 2) + maxScore))
         {
             Debug.Log("neutral end");
+            GameManager.ChangeScene("ending-neutral");
         } else if (GameManager.Instance.rate >= ((maxScore * 2) + maxScore))
         {
             Debug.Log("good end");
+            GameManager.ChangeScene("ending-good");
         }
     }
 
