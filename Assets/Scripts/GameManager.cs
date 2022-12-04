@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public bool choiceDone = false;
 
     // Gestion note
-    public int rate = 15;
+    [SerializeField]  public int rate = 15;
     public static int maxScore = 15;
     public static int minScore = 5;
 
@@ -40,15 +40,15 @@ public class GameManager : MonoBehaviour
     }
     public static void Ending()
     {
-        if (GameManager.Instance.rate < (maxScore * 2))
+        if (GameManager.Instance.rate < maxScore)
         {
             Debug.Log("bad end");
             GameManager.ChangeScene("ending-bad");
-        } else if (GameManager.Instance.rate >= (maxScore * 2) && GameManager.Instance.rate < ((maxScore * 2) + maxScore))
+        } else if (GameManager.Instance.rate >= maxScore && GameManager.Instance.rate < (maxScore * 2))
         {
             Debug.Log("neutral end");
             GameManager.ChangeScene("ending-neutral");
-        } else if (GameManager.Instance.rate >= ((maxScore * 2) + maxScore))
+        } else if (GameManager.Instance.rate >= (maxScore * 2))
         {
             Debug.Log("good end");
             GameManager.ChangeScene("ending-good");
