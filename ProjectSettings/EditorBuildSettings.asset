@@ -35,4 +35,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/gameOver.unity
     guid: 3dde53ed662ca444ca4c727ebbb9d7b2
+  - enabled: 1
+    path: Assets/Scenes/ending-bad.unity
+    guid: 0d73036e94e344424a92f421c3cc1703
+  - enabled: 1
+    path: Assets/Scenes/ending-good.unity
+    guid: 113e2f3c19ee3421b800be60c3d97e2c
+  - enabled: 1
+    path: Assets/Scenes/ending-neutral.unity
+    guid: 41abea7fb641c4077b48707f7900abe0
+  - enabled: 1
+    path: Assets/Scenes/memory-0.unity
+    guid: 8a3f89e1284f543878357a630b6ab9fd
   m_configObjects: {}

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public static void ChangeScene (string sceneName)
     {
         Debug.Log("change scene");
-            SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
     public static void Ending()
     {

@@ -252,7 +252,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
 
-        GameManager.ChangeLevel();
+        SceneManager.LoadScene("memory-0");
     }
 
     private void PickItem(GameObject item)

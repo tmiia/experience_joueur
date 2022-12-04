@@ -2370,7 +2370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715524317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.4, y: 32.6, z: -10}
+  m_LocalPosition: {x: 127.200005, y: 42, z: -10}
   m_LocalScale: {x: 4.648125, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3679,23 +3679,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0302edc2a61b45c0b9a005975501919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 5
   speed: 8
+  jumpForce: 9
+  groundedDistance: 8
+  life: 5
   collectibleLayer: 6
   lamp: 0
   battery: 0
+  characterLight: {fileID: 0}
   itemLifeSecond: lamp
   itemLifeFirst: battery
-  animator: {fileID: 1142810203}
-  standingCollider: {fileID: 0}
-  groundCheck: {fileID: 0}
-  topCheck: {fileID: 0}
+  character: {fileID: 0}
   groundedLayer:
     serializedVersion: 2
     m_Bits: 8
   deathZoneLayer:
     serializedVersion: 2
     m_Bits: 2147483648
+  animator: {fileID: 1142810203}
 --- !u!61 &1142810205
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3803,7 +3804,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142810202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -44.8, y: 31.9, z: 0}
+  m_LocalPosition: {x: 113.8, y: 41.3, z: 0}
   m_LocalScale: {x: 0.38073465, y: 0.38073465, z: 0.38073465}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5027,7 +5028,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966753535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.4, y: 32.6, z: -10}
+  m_LocalPosition: {x: 127.200005, y: 42, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
