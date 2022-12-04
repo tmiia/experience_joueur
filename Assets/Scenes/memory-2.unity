@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 51817787}
   m_Layer: 5
   m_Name: Dialogue-3
-  m_TagString: neutralChoice
+  m_TagString: badChoice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4497,7 +4497,7 @@ GameObject:
   - component: {fileID: 1193164886}
   m_Layer: 5
   m_Name: Dialogue-2
-  m_TagString: badChoice
+  m_TagString: neutralChoice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
