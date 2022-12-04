@@ -2984,7 +2984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Le Labyrinthe \nd'Orph\xE9e"
+  m_text: "Les Souvenirs\nd'Orph\xE9e"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 411dc513e306b428b9d2985e6057b9e1, type: 2}
   m_sharedMaterial: {fileID: -1522842741599687524, guid: 411dc513e306b428b9d2985e6057b9e1, type: 2}
