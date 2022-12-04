@@ -20,7 +20,7 @@ public class Choice : MonoBehaviour
     void Start()
     {
        
-        GameObject originalGameObject = GameObject.Find("Choices");
+        GameObject originalGameObject = GameObject.Find("Choices-container");
         for (int i = 0; i < originalGameObject.transform.childCount; i++)
         {
             GameObject child = originalGameObject.transform.GetChild(i).gameObject;
