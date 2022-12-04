@@ -94,7 +94,7 @@ public class Choice : MonoBehaviour
 
     public void GoToNextLevel()
     {
-        if (GameManager.currentLevel == (GameManager.totalLevel - 1))
+        if (GameManager.currentLevel == (GameManager.totalLevel))
         {
             GameManager.Ending();
         }

@@ -10,10 +10,10 @@ public class GameManager : MonoBehaviour
 
     // Variables globales
 
-    public static int choice = 0;
+    public static int choice = 1;
     public static int currentLevel = 0;
     public static int achivedLevel = 0;
-    public static int totalLevel = 3;
+    public static int totalLevel = 2;
     public bool choiceDone = false;
 
     // Gestion note
