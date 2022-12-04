@@ -5018,9 +5018,9 @@ GameObject:
   - component: {fileID: 661235905}
   - component: {fileID: 661235907}
   - component: {fileID: 661235908}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Horloge aiguille minutes (2)@4x
-  m_TagString: Untagged
+  m_TagString: plateform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6329,6 +6329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc2e2bc7efae04464a5c7128aefe84e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  choiceDone: 0
   rate: 0
 --- !u!4 &913932571
 Transform:
